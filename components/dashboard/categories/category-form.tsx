@@ -33,7 +33,7 @@ export default function CategoryForm({
         type="submit"
         className="rounded-2xl bg-neutral-900 px-6 py-3 text-white"
       >
-        Guardar categoría
+        Guardar categoria
       </button>
     </form>
   );

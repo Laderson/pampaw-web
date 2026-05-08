@@ -25,7 +25,7 @@ export default function CategoriesList({
           href="/dashboard/categories/new"
           className="rounded-2xl bg-neutral-900 px-5 py-3 text-white"
         >
-          Nueva categoría
+          Nueva categoria
         </Link>
       </div>
 
