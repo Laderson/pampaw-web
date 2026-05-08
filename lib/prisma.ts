@@ -1,4 +1,4 @@
-import { PrismaClient } from "../generated/prisma/client";
+import { PrismaClient } from "../generated/prisma";
 import { PrismaPg } from "@prisma/adapter-pg";
 import pg from "pg";
 
@@ -11,15 +11,15 @@ const pool = new pg.Pool({
 const adapter = new PrismaPg(pool);
 
 const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined;
+  prisma_v3: PrismaClient | undefined;
 };
 
 export const prisma =
-  globalForPrisma.prisma ??
+  globalForPrisma.prisma_v3 ??
   new PrismaClient({
     adapter,
   });
 
 if (process.env.NODE_ENV !== "production") {
-  globalForPrisma.prisma = prisma;
-}
+  globalForPrisma.prisma_v3 = prisma;
+}

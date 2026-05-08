@@ -1,6 +1,6 @@
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../generated/prisma"
 }
 
@@ -35,6 +35,7 @@ model Category {
 model Service {
   id          String   @id @default(cuid())
   name        String
+  category    String   @default("General")
   description String?
   price       Float
   duration    Int
@@ -43,6 +44,7 @@ model Service {
 
   createdAt DateTime @default(now())
 }
+
 
 model Appointment {
   id          String   @id @default(cuid())
@@ -61,5 +63,41 @@ model Appointment {
   serviceId   String
   service     Service  @relation(fields: [serviceId], references: [id])
 
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id])
+
   createdAt   DateTime @default(now())
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String?   @unique
+  name          String?
+  phone         String?   @unique
+  image         String?
+  
+  appointments  Appointment[]
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  date        DateTime
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+
+model Promotion {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  discount    Float
+
 }

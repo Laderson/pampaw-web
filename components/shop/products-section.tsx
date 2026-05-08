@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ProductCard from "./product-card";
 
 type Product = {
@@ -16,26 +17,28 @@ export default function ProductsSection({
   products,
 }: ProductsSectionProps) {
   return (
-    <section className="bg-white py-24">
+    <section id="petshop" className="bg-white py-32">
       <div className="mx-auto max-w-7xl px-6">
         {/* Heading */}
-        <div className="flex items-end justify-between gap-6">
+        <div className="flex items-end justify-between gap-6 border-b border-neutral-100 pb-12">
           <div className="max-w-2xl">
-            <span className="text-sm font-semibold uppercase tracking-wider text-neutral-500">
-              Tienda
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-400">
+              Pampaw Shop
             </span>
 
-            <h2 className="mt-4 text-4xl font-bold text-neutral-900">
-              Productos destacados para tu mascota.
+            <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">
+              Esenciales <br />
+              <span className="text-neutral-300">Para tu Mascota.</span>
             </h2>
           </div>
 
-          <a
-            href="/tienda-mascotas-barranquilla"
-            className="hidden text-sm font-semibold text-neutral-900 md:block"
+          <Link
+            href="/petshop"
+            className="group flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-neutral-900"
           >
-            Ver todos →
-          </a>
+            Ver catálogo completo
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </Link>
         </div>
 
         {/* Grid */}

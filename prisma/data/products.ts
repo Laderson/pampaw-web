@@ -1,0 +1,51 @@
+export const products = [
+  {
+    name: "Alimento Holístico Senior",
+    description: "Nutrición avanzada con ingredientes naturales para perros de edad avanzada.",
+    price: 185000,
+    stock: 15,
+    imageUrl: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=1200&auto=format&fit=crop",
+    categoryName: "Alimentos Premium",
+  },
+  {
+    name: "Arnés de Cuero Artesanal",
+    description: "Elegancia y resistencia en cada paseo. Cuero genuino tratado para máxima comodidad.",
+    price: 95000,
+    stock: 10,
+    imageUrl: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=1200&auto=format&fit=crop",
+    categoryName: "Accesorios",
+  },
+  {
+    name: "Cama Ortopédica Viscoelástica",
+    description: "El descanso que tu mejor amigo merece. Soporte ergonómico para articulaciones.",
+    price: 240000,
+    stock: 5,
+    imageUrl: "https://images.unsplash.com/photo-1591768793355-74d7c80b0e9c?q=80&w=1200&auto=format&fit=crop",
+    categoryName: "Descanso",
+  },
+  {
+    name: "Champú de Avena & Miel",
+    description: "Cuidado delicado para pieles sensibles. Ingredientes 100% orgánicos.",
+    price: 38000,
+    stock: 25,
+    imageUrl: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=1200&auto=format&fit=crop",
+    categoryName: "Higiene & Cuidado",
+  },
+  {
+    name: "Snacks Dentales Naturales",
+    description: "Limpieza profunda y aliento fresco con ingredientes naturales y sin cereales.",
+    price: 22000,
+    stock: 40,
+    imageUrl: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1200&auto=format&fit=crop",
+    categoryName: "Alimentos Premium",
+  },
+  {
+    name: "Set de Juguetes Interactivos",
+    description: "Estimulación mental y física para cachorros curiosos. Materiales ultra-resistentes.",
+    price: 65000,
+    stock: 20,
+    imageUrl: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=1200&auto=format&fit=crop",
+    categoryName: "Juguetes & Diversión",
+  },
+];
+

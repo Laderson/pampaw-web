@@ -37,3 +37,13 @@ export type Service = Prisma.ServiceModel
  * 
  */
 export type Appointment = Prisma.AppointmentModel
+/**
+ * Model Event
+ * 
+ */
+export type Event = Prisma.EventModel
+/**
+ * Model Promotion
+ * 
+ */
+export type Promotion = Prisma.PromotionModel

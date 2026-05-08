@@ -1,56 +1,60 @@
+import Link from "next/link";
+
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#f8f6f2]">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-2 lg:items-center">
+    <section className="relative overflow-hidden bg-white py-12 lg:py-24">
+      {/* Decorative element */}
+      <div className="absolute top-0 right-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-neutral-50/50 blur-3xl" />
+      
+      <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:items-center">
         {/* Left Content */}
-        <div>
-          <img
-            src="Airbrush-IMAGE-ENHANCER-1778183031890-1778183031890_fvomrz"
-            alt="Pampaw Pet Store"
-            className="mb-4 h-12 w-auto"
-          />
-          <span className="mb-4 inline-block rounded-full bg-white px-4 py-1 text-sm font-medium text-neutral-700 shadow-sm">
-            🐶 Spa Canino & Veterinaria en Barranquilla
+        <div className="relative z-10">
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-neutral-400">
+            Est. 2024 — Barranquilla
           </span>
-
-          <h1 className="mt-6 text-5xl font-bold leading-tight text-neutral-900">
-            Cuidamos a tu mascota como parte de la familia.
+          
+          <h1 className="mt-8 text-5xl font-black tracking-tighter text-neutral-900 md:text-8xl leading-[0.85]">
+            Cuidado <br />
+            <span className="text-neutral-200">Excepcional.</span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-neutral-600">
-            Servicios de spa canino, veterinaria y tienda especializada para
-            mascotas con atención profesional y mucho amor.
+          <p className="mt-8 max-w-md text-base md:text-lg leading-relaxed text-neutral-500 font-medium">
+            Experiencia premium en bienestar animal. Un santuario dedicado a la salud y felicidad de tu mejor amigo.
           </p>
 
-          {/* Buttons */}
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href="/spa-canino-barranquilla"
-              className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-            >
-              Ver servicios
-            </a>
 
-            <a
+          {/* Buttons */}
+          <div className="mt-12 flex flex-wrap gap-6">
+            <Link
               href="/agendar-cita"
-              className="rounded-full border border-neutral-300 bg-white px-6 py-3 text-sm font-semibold text-neutral-800 transition hover:bg-neutral-100"
+              className="rounded-full bg-black px-12 py-5 text-[10px] font-black uppercase tracking-[0.25em] text-white transition hover:bg-neutral-800 active:scale-95"
             >
-              Agendar cita
-            </a>
+              Reservar Ahora
+            </Link>
+
+            <Link
+              href="/tienda-mascotas-barranquilla"
+              className="group flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.2em] text-neutral-900"
+            >
+              Explorar Tienda
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-100 transition-colors group-hover:bg-neutral-50">
+                →
+              </span>
+            </Link>
           </div>
         </div>
 
         {/* Right Content */}
-        <div className="relative">
-          <div className="aspect-square overflow-hidden rounded-3xl bg-neutral-200 shadow-xl">
+        <div className="relative lg:ml-auto">
+          <div className="relative aspect-[4/5] w-full max-w-[500px] overflow-hidden rounded-[2.5rem] bg-neutral-50">
             <img
-              src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1200&auto=format&fit=crop"
-              alt="Perro feliz"
-              className="h-full w-full object-cover"
+              src="/images/hero-dog.jpg"
+              alt="Mascota feliz en Pampaw"
+              className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />
           </div>
         </div>
       </div>
     </section>
   );
-}
+}

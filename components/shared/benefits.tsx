@@ -1,61 +1,59 @@
 const benefits = [
   {
-    title: "Atención Profesional",
+    title: "Atención Elite",
     description:
-      "Contamos con personal capacitado y amante de los animales.",
+      "Personal altamente capacitado y apasionado por el bienestar animal.",
   },
-
   {
-    title: "Productos Premium",
+    title: "Catálogo Curado",
     description:
-      "Trabajamos con productos de alta calidad para el bienestar de tu mascota.",
+      "Selección exclusiva de productos premium para la salud de tu mascota.",
   },
-
   {
-    title: "Agenda Rápida",
+    title: "Smart Booking",
     description:
-      "Agenda fácilmente servicios y consultas por WhatsApp.",
+      "Flujo de reserva inteligente e integrado con Google para tu comodidad.",
   },
-
   {
-    title: "Cuidado con Amor",
+    title: "Filosofía Familiar",
     description:
-      "Tratamos cada mascota como parte de nuestra familia.",
+      "Cada mascota es tratada con la misma dedicación que un miembro de casa.",
   },
 ];
 
 export default function Benefits() {
   return (
-    <section className="bg-[#f8f6f2] py-24">
+    <section className="bg-white py-32">
       <div className="mx-auto max-w-7xl px-6">
         {/* Heading */}
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-wider text-neutral-500">
-            ¿Por qué elegirnos?
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-neutral-400">
+            ¿Por qué Pampaw?
           </span>
 
-          <h2 className="mt-4 text-4xl font-bold text-neutral-900">
-            Mucho más que una veterinaria.
+          <h2 className="mt-8 text-4xl font-black tracking-tighter text-neutral-900 md:text-6xl">
+            Un estándar <br />
+            <span className="text-neutral-200">Superior de cuidado.</span>
           </h2>
 
-          <p className="mt-6 text-lg leading-relaxed text-neutral-600">
+          <p className="mx-auto mt-8 max-w-xl text-lg font-medium leading-relaxed text-neutral-500">
             En Pampaw nos enfocamos en brindar bienestar, confianza y una
-            experiencia premium para cada mascota.
+            experiencia excepcional para cada mascota.
           </p>
         </div>
 
         {/* Grid */}
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-24 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {benefits.map((benefit) => (
             <div
               key={benefit.title}
-              className="rounded-3xl bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="group rounded-[2rem] border border-neutral-100 bg-white p-10 transition-all duration-300 hover:bg-neutral-50/50"
             >
-              <h3 className="text-xl font-semibold text-neutral-900">
+              <h3 className="text-xl font-black tracking-tight text-neutral-900">
                 {benefit.title}
               </h3>
 
-              <p className="mt-4 leading-relaxed text-neutral-600">
+              <p className="mt-6 text-base font-medium leading-relaxed text-neutral-500">
                 {benefit.description}
               </p>
             </div>
@@ -64,4 +62,4 @@ export default function Benefits() {
       </div>
     </section>
   );
-}
+}

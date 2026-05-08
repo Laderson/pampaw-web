@@ -1,6 +1,6 @@
 import "dotenv/config";
 
-import { PrismaClient } from "../generated/prisma/client";
+import { PrismaClient } from "../generated/prisma";
 
 import { PrismaPg } from "@prisma/adapter-pg";
 import pg from "pg";
@@ -17,73 +17,68 @@ const prisma = new PrismaClient({
   adapter,
 });
 
+import { categories } from "./data/categories";
+import { services } from "./data/services";
+import { products } from "./data/products";
+import { promotions } from "./data/promotions";
+
 async function main() {
-  await prisma.category.createMany({
-    data: [
-      { name: "Alimentos" },
-      { name: "Accesorios" },
-      { name: "Higiene" },
-    ],
-    skipDuplicates: true,
-  });
+  console.log("🌱 Iniciando proceso de seed modular...");
 
-  await prisma.service.createMany({
-    data: [
-      {
-        name: "Baño Canino",
-        description: "Baño completo para mascotas",
-        price: 35000,
-        duration: 60,
-      },
-      {
-        name: "Consulta Veterinaria",
-        description: "Consulta general",
-        price: 50000,
-        duration: 30,
-      },
-    ],
-    skipDuplicates: true,
-  });
-
-  const category = await prisma.category.findFirst();
-
-  if (category) {
-    await prisma.product.createMany({
-      data: [
-        {
-          name: "Shampoo Premium Canino",
-          description: "Cuidado e hidratación para el pelaje.",
-          price: 45000,
-          stock: 10,
-          imageUrl:
-            "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=1200&auto=format&fit=crop",
-          categoryId: category.id,
-        },
-
-        {
-          name: "Collar para Mascotas",
-          description: "Collar cómodo y resistente.",
-          price: 35000,
-          stock: 15,
-          imageUrl:
-            "https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1200&auto=format&fit=crop",
-          categoryId: category.id,
-        },
-
-        {
-          name: "Juguete Interactivo",
-          description: "Diversión y estimulación para tu mascota.",
-          price: 28000,
-          stock: 20,
-          imageUrl:
-            "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1200&auto=format&fit=crop",
-          categoryId: category.id,
-        },
-      ],
-    });
+  try {
+    await prisma.$connect();
+    console.log("🔌 Conectado a la base de datos");
+  } catch (err: any) {
+    console.error("❌ Error de conexión:", err);
+    process.exit(1);
   }
 
-  console.log("✅ Seed ejecutado correctamente");
+  // 1. Limpiar base de datos (usando nombres de modelo verificados)
+  console.log("🧹 Limpiando base de datos...");
+  try {
+    if (prisma.promotion) await prisma.promotion.deleteMany();
+    if (prisma.product) await prisma.product.deleteMany();
+    if (prisma.service) await prisma.service.deleteMany();
+    if (prisma.category) await prisma.category.deleteMany();
+  } catch (err: any) {
+    console.warn("⚠️ Advertencia al limpiar tablas:", err.message);
+  }
+
+  // 2. Sembrar Categorías
+  console.log("📦 Sembrando categorías...");
+  for (const cat of categories) {
+    await prisma.category.create({ data: cat });
+  }
+  const categoryList = await prisma.category.findMany();
+
+  // 3. Sembrar Servicios
+  console.log("🛁 Sembrando servicios...");
+  for (const service of services) {
+    await prisma.service.create({ data: service });
+  }
+
+  // 4. Sembrar Productos
+  console.log("🛍️ Sembrando productos...");
+  for (const productData of products) {
+    const { categoryName, ...rest } = productData;
+    const category = categoryList.find((c) => c.name === categoryName);
+    if (category) {
+      await prisma.product.create({
+        data: {
+          ...rest,
+          categoryId: category.id,
+        },
+      });
+    }
+  }
+
+  // 5. Sembrar Promociones
+  console.log("🏷️ Sembrando promociones...");
+  for (const promo of promotions) {
+    await prisma.promotion.create({ data: promo });
+  }
+
+  console.log("✅ Seed premium modular completado con éxito");
 }
 
 main()
