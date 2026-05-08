@@ -1,0 +1,65 @@
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  stock       Int
+  imageUrl    String?
+  categoryId  String
+
+  category    Category @relation(fields: [categoryId], references: [id])
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  name      String    @unique
+
+  products  Product[]
+
+  createdAt DateTime @default(now())
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  duration    Int
+
+  appointments Appointment[]
+
+  createdAt DateTime @default(now())
+}
+
+model Appointment {
+  id          String   @id @default(cuid())
+
+  ownerName   String
+  phone       String
+
+  petName     String
+  petType     String
+  petBreed    String?
+
+  appointment DateTime
+
+  status      String   @default("pending")
+
+  serviceId   String
+  service     Service  @relation(fields: [serviceId], references: [id])
+
+  createdAt   DateTime @default(now())
+}
