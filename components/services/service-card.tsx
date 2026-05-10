@@ -43,7 +43,7 @@ export default function ServiceCard({
           </div>
 
           <Link
-            href={`/agendar-cita?category=${category}&serviceId=${id}`}
+            href={`/agendar-cita/fecha?serviceId=${id}`}
             className="rounded-full bg-black px-8 py-4 text-[9px] font-black uppercase tracking-[0.2em] text-white transition hover:bg-neutral-800 active:scale-95"
           >
             Reservar

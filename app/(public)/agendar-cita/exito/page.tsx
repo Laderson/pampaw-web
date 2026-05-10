@@ -21,20 +21,7 @@ export default function SuccessPage() {
           Tu cita ha sido agendada con éxito y ya aparece en nuestro calendario. Te esperamos pronto en Pampaw.
         </p>
 
-        <div className="mt-12 flex flex-col gap-4">
-          <Link
-            href="/"
-            className="rounded-full bg-black px-10 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-white transition hover:bg-neutral-800 active:scale-95 shadow-xl shadow-neutral-100"
-          >
-            Volver al Inicio
-          </Link>
-          
-          <Link
-            href="/dashboard/calendar"
-            className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-400 hover:text-neutral-900 transition-colors"
-          >
-            Ver en el Calendario
-          </Link>
+        <div className="mt-12">
         </div>
       </div>
     </main>

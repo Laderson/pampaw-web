@@ -31,19 +31,19 @@ export default async function HomePage() {
     <main className="overflow-hidden">
       <Hero />
       
-      <div id="servicios" className="scroll-mt-48 reveal-section">
+      <div id="servicios" className="scroll-mt-48">
         <ServicesSection services={services} />
       </div>
 
-      <div id="promos" className="scroll-mt-48 reveal-section">
+      <div id="promos" className="scroll-mt-48">
         <PromotionsSection promotions={promotions} />
       </div>
       
-      <div className="reveal-section">
+      <div>
         <Benefits />
       </div>
 
-      <div id="petshop" className="scroll-mt-48 reveal-section">
+      <div id="petshop" className="scroll-mt-48">
         <ProductsSection products={products} />
       </div>
     </main>
