@@ -28,7 +28,7 @@ export default function ProductsSection({
 
             <h2 className="mt-4 text-4xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">
               Esenciales <br />
-              <span className="text-neutral-300">Para tu Mascota.</span>
+              <span className="text-green-600">Para tu Mascota.</span>
             </h2>
           </div>
 

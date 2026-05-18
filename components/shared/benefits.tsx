@@ -33,7 +33,7 @@ export default function Benefits() {
 
           <h2 className="mt-8 text-4xl font-black tracking-tighter text-neutral-900 md:text-6xl">
             Un estándar <br />
-            <span className="text-neutral-200">Superior de cuidado.</span>
+            <span className="text-green-600">Superior de cuidado.</span>
           </h2>
 
           <p className="mx-auto mt-8 max-w-xl text-lg font-medium leading-relaxed text-neutral-500">
@@ -62,4 +62,4 @@ export default function Benefits() {
       </div>
     </section>
   );
-}
+}

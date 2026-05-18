@@ -20,7 +20,7 @@ export default async function TiendaMascotasPage() {
           </span>
 
           <h1 className="mt-8 text-5xl font-black tracking-tighter text-neutral-900 md:text-7xl">
-            Calidad <span className="text-neutral-200">Sin Compromisos.</span>
+            Calidad <span className="text-green-600">Sin Compromisos.</span>
           </h1>
 
           <p className="mx-auto mt-8 max-w-2xl text-lg font-medium leading-relaxed text-neutral-500">
@@ -47,4 +47,4 @@ export default async function TiendaMascotasPage() {
       </section>
     </main>
   );
-}
+}

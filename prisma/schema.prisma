@@ -47,26 +47,34 @@ model Service {
 
 
 model Appointment {
-  id          String   @id @default(cuid())
+  id            String   @id @default(cuid())
 
-  ownerName   String
-  phone       String
+  ownerName     String
+  phone         String
+  email         String
+  address       String
 
-  petName     String
-  petType     String
-  petBreed    String?
+  petName       String
+  petType       String
+  petBreed      String?
+  petGender     PetGender
 
-  appointment DateTime
+  appointment   DateTime
 
-  status      String   @default("pending")
+  status        String   @default("pending")
 
-  serviceId   String
-  service     Service  @relation(fields: [serviceId], references: [id])
+  serviceId     String
+  service       Service  @relation(fields: [serviceId], references: [id])
 
-  userId      String?
-  user        User?    @relation(fields: [userId], references: [id])
+  userId        String?
+  user          User?    @relation(fields: [userId], references: [id])
 
-  createdAt   DateTime @default(now())
+  createdAt     DateTime @default(now())
+}
+
+enum PetGender {
+  MALE
+  FEMALE
 }
 
 model User {
@@ -101,3 +109,4 @@ model Promotion {
   discount    Float
 
 }
+

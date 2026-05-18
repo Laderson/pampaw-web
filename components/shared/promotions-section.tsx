@@ -30,7 +30,7 @@ export default function PromotionsSection({ promotions }: PromotionsSectionProps
             </h2>
             <h3 className="mt-4 text-4xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">
               Descubre nuestras <br />
-              <span className="text-neutral-300">Promociones Especiales</span>
+              <span className="text-green-600">Promociones Especiales</span>
             </h3>
           </div>
           <p className="max-w-md text-lg text-neutral-500 font-medium">

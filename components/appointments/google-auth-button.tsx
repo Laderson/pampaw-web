@@ -1,7 +1,7 @@
 "use client";
 
 import { signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "@/app/config/firebaseConfig";
+import { auth, googleProvider } from "@/lib/config/firebaseConfig";
 import { useState } from "react";
 
 export default function GoogleAuthButton() {

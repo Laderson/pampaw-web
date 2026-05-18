@@ -27,7 +27,7 @@ export default function ServicesSection({
             </h2>
             <h3 className="mt-4 text-4xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">
               Cuidado Integral <br />
-              <span className="text-neutral-300">& Servicios Premium</span>
+              <span className="text-green-600">& Servicios Premium</span>
             </h3>
           </div>
           <p className="max-w-md text-lg text-neutral-500 font-medium">
@@ -41,4 +41,4 @@ export default function ServicesSection({
       </div>
     </section>
   );
-}
+}

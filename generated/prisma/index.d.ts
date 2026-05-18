@@ -50,6 +50,23 @@ export type Event = $Result.DefaultSelection<Prisma.$EventPayload>
 export type Promotion = $Result.DefaultSelection<Prisma.$PromotionPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const PetGender: {
+  MALE: 'MALE',
+  FEMALE: 'FEMALE'
+};
+
+export type PetGender = (typeof PetGender)[keyof typeof PetGender]
+
+}
+
+export type PetGender = $Enums.PetGender
+
+export const PetGender: typeof $Enums.PetGender
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -4859,9 +4876,12 @@ export namespace Prisma {
     id: string | null
     ownerName: string | null
     phone: string | null
+    email: string | null
+    address: string | null
     petName: string | null
     petType: string | null
     petBreed: string | null
+    petGender: $Enums.PetGender | null
     appointment: Date | null
     status: string | null
     serviceId: string | null
@@ -4873,9 +4893,12 @@ export namespace Prisma {
     id: string | null
     ownerName: string | null
     phone: string | null
+    email: string | null
+    address: string | null
     petName: string | null
     petType: string | null
     petBreed: string | null
+    petGender: $Enums.PetGender | null
     appointment: Date | null
     status: string | null
     serviceId: string | null
@@ -4887,9 +4910,12 @@ export namespace Prisma {
     id: number
     ownerName: number
     phone: number
+    email: number
+    address: number
     petName: number
     petType: number
     petBreed: number
+    petGender: number
     appointment: number
     status: number
     serviceId: number
@@ -4903,9 +4929,12 @@ export namespace Prisma {
     id?: true
     ownerName?: true
     phone?: true
+    email?: true
+    address?: true
     petName?: true
     petType?: true
     petBreed?: true
+    petGender?: true
     appointment?: true
     status?: true
     serviceId?: true
@@ -4917,9 +4946,12 @@ export namespace Prisma {
     id?: true
     ownerName?: true
     phone?: true
+    email?: true
+    address?: true
     petName?: true
     petType?: true
     petBreed?: true
+    petGender?: true
     appointment?: true
     status?: true
     serviceId?: true
@@ -4931,9 +4963,12 @@ export namespace Prisma {
     id?: true
     ownerName?: true
     phone?: true
+    email?: true
+    address?: true
     petName?: true
     petType?: true
     petBreed?: true
+    petGender?: true
     appointment?: true
     status?: true
     serviceId?: true
@@ -5018,9 +5053,12 @@ export namespace Prisma {
     id: string
     ownerName: string
     phone: string
+    email: string
+    address: string
     petName: string
     petType: string
     petBreed: string | null
+    petGender: $Enums.PetGender
     appointment: Date
     status: string
     serviceId: string
@@ -5049,9 +5087,12 @@ export namespace Prisma {
     id?: boolean
     ownerName?: boolean
     phone?: boolean
+    email?: boolean
+    address?: boolean
     petName?: boolean
     petType?: boolean
     petBreed?: boolean
+    petGender?: boolean
     appointment?: boolean
     status?: boolean
     serviceId?: boolean
@@ -5065,9 +5106,12 @@ export namespace Prisma {
     id?: boolean
     ownerName?: boolean
     phone?: boolean
+    email?: boolean
+    address?: boolean
     petName?: boolean
     petType?: boolean
     petBreed?: boolean
+    petGender?: boolean
     appointment?: boolean
     status?: boolean
     serviceId?: boolean
@@ -5081,9 +5125,12 @@ export namespace Prisma {
     id?: boolean
     ownerName?: boolean
     phone?: boolean
+    email?: boolean
+    address?: boolean
     petName?: boolean
     petType?: boolean
     petBreed?: boolean
+    petGender?: boolean
     appointment?: boolean
     status?: boolean
     serviceId?: boolean
@@ -5097,9 +5144,12 @@ export namespace Prisma {
     id?: boolean
     ownerName?: boolean
     phone?: boolean
+    email?: boolean
+    address?: boolean
     petName?: boolean
     petType?: boolean
     petBreed?: boolean
+    petGender?: boolean
     appointment?: boolean
     status?: boolean
     serviceId?: boolean
@@ -5107,7 +5157,7 @@ export namespace Prisma {
     createdAt?: boolean
   }
 
-  export type AppointmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerName" | "phone" | "petName" | "petType" | "petBreed" | "appointment" | "status" | "serviceId" | "userId" | "createdAt", ExtArgs["result"]["appointment"]>
+  export type AppointmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ownerName" | "phone" | "email" | "address" | "petName" | "petType" | "petBreed" | "petGender" | "appointment" | "status" | "serviceId" | "userId" | "createdAt", ExtArgs["result"]["appointment"]>
   export type AppointmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     service?: boolean | ServiceDefaultArgs<ExtArgs>
     user?: boolean | Appointment$userArgs<ExtArgs>
@@ -5131,9 +5181,12 @@ export namespace Prisma {
       id: string
       ownerName: string
       phone: string
+      email: string
+      address: string
       petName: string
       petType: string
       petBreed: string | null
+      petGender: $Enums.PetGender
       appointment: Date
       status: string
       serviceId: string
@@ -5567,9 +5620,12 @@ export namespace Prisma {
     readonly id: FieldRef<"Appointment", 'String'>
     readonly ownerName: FieldRef<"Appointment", 'String'>
     readonly phone: FieldRef<"Appointment", 'String'>
+    readonly email: FieldRef<"Appointment", 'String'>
+    readonly address: FieldRef<"Appointment", 'String'>
     readonly petName: FieldRef<"Appointment", 'String'>
     readonly petType: FieldRef<"Appointment", 'String'>
     readonly petBreed: FieldRef<"Appointment", 'String'>
+    readonly petGender: FieldRef<"Appointment", 'PetGender'>
     readonly appointment: FieldRef<"Appointment", 'DateTime'>
     readonly status: FieldRef<"Appointment", 'String'>
     readonly serviceId: FieldRef<"Appointment", 'String'>
@@ -9220,9 +9276,12 @@ export namespace Prisma {
     id: 'id',
     ownerName: 'ownerName',
     phone: 'phone',
+    email: 'email',
+    address: 'address',
     petName: 'petName',
     petType: 'petType',
     petBreed: 'petBreed',
+    petGender: 'petGender',
     appointment: 'appointment',
     status: 'status',
     serviceId: 'serviceId',
@@ -9351,6 +9410,20 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'PetGender'
+   */
+  export type EnumPetGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PetGender'>
+    
+
+
+  /**
+   * Reference to a field of type 'PetGender[]'
+   */
+  export type ListEnumPetGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PetGender[]'>
     
   /**
    * Deep Input Types
@@ -9553,9 +9626,12 @@ export namespace Prisma {
     id?: StringFilter<"Appointment"> | string
     ownerName?: StringFilter<"Appointment"> | string
     phone?: StringFilter<"Appointment"> | string
+    email?: StringFilter<"Appointment"> | string
+    address?: StringFilter<"Appointment"> | string
     petName?: StringFilter<"Appointment"> | string
     petType?: StringFilter<"Appointment"> | string
     petBreed?: StringNullableFilter<"Appointment"> | string | null
+    petGender?: EnumPetGenderFilter<"Appointment"> | $Enums.PetGender
     appointment?: DateTimeFilter<"Appointment"> | Date | string
     status?: StringFilter<"Appointment"> | string
     serviceId?: StringFilter<"Appointment"> | string
@@ -9569,9 +9645,12 @@ export namespace Prisma {
     id?: SortOrder
     ownerName?: SortOrder
     phone?: SortOrder
+    email?: SortOrder
+    address?: SortOrder
     petName?: SortOrder
     petType?: SortOrder
     petBreed?: SortOrderInput | SortOrder
+    petGender?: SortOrder
     appointment?: SortOrder
     status?: SortOrder
     serviceId?: SortOrder
@@ -9588,9 +9667,12 @@ export namespace Prisma {
     NOT?: AppointmentWhereInput | AppointmentWhereInput[]
     ownerName?: StringFilter<"Appointment"> | string
     phone?: StringFilter<"Appointment"> | string
+    email?: StringFilter<"Appointment"> | string
+    address?: StringFilter<"Appointment"> | string
     petName?: StringFilter<"Appointment"> | string
     petType?: StringFilter<"Appointment"> | string
     petBreed?: StringNullableFilter<"Appointment"> | string | null
+    petGender?: EnumPetGenderFilter<"Appointment"> | $Enums.PetGender
     appointment?: DateTimeFilter<"Appointment"> | Date | string
     status?: StringFilter<"Appointment"> | string
     serviceId?: StringFilter<"Appointment"> | string
@@ -9604,9 +9686,12 @@ export namespace Prisma {
     id?: SortOrder
     ownerName?: SortOrder
     phone?: SortOrder
+    email?: SortOrder
+    address?: SortOrder
     petName?: SortOrder
     petType?: SortOrder
     petBreed?: SortOrderInput | SortOrder
+    petGender?: SortOrder
     appointment?: SortOrder
     status?: SortOrder
     serviceId?: SortOrder
@@ -9624,9 +9709,12 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Appointment"> | string
     ownerName?: StringWithAggregatesFilter<"Appointment"> | string
     phone?: StringWithAggregatesFilter<"Appointment"> | string
+    email?: StringWithAggregatesFilter<"Appointment"> | string
+    address?: StringWithAggregatesFilter<"Appointment"> | string
     petName?: StringWithAggregatesFilter<"Appointment"> | string
     petType?: StringWithAggregatesFilter<"Appointment"> | string
     petBreed?: StringNullableWithAggregatesFilter<"Appointment"> | string | null
+    petGender?: EnumPetGenderWithAggregatesFilter<"Appointment"> | $Enums.PetGender
     appointment?: DateTimeWithAggregatesFilter<"Appointment"> | Date | string
     status?: StringWithAggregatesFilter<"Appointment"> | string
     serviceId?: StringWithAggregatesFilter<"Appointment"> | string
@@ -10017,9 +10105,12 @@ export namespace Prisma {
     id?: string
     ownerName: string
     phone: string
+    email: string
+    address: string
     petName: string
     petType: string
     petBreed?: string | null
+    petGender: $Enums.PetGender
     appointment: Date | string
     status?: string
     createdAt?: Date | string
@@ -10031,9 +10122,12 @@ export namespace Prisma {
     id?: string
     ownerName: string
     phone: string
+    email: string
+    address: string
     petName: string
     petType: string
     petBreed?: string | null
+    petGender: $Enums.PetGender
     appointment: Date | string
     status?: string
     serviceId: string
@@ -10045,9 +10139,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     ownerName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     petName?: StringFieldUpdateOperationsInput | string
     petType?: StringFieldUpdateOperationsInput | string
     petBreed?: NullableStringFieldUpdateOperationsInput | string | null
+    petGender?: EnumPetGenderFieldUpdateOperationsInput | $Enums.PetGender
     appointment?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10059,9 +10156,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     ownerName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     petName?: StringFieldUpdateOperationsInput | string
     petType?: StringFieldUpdateOperationsInput | string
     petBreed?: NullableStringFieldUpdateOperationsInput | string | null
+    petGender?: EnumPetGenderFieldUpdateOperationsInput | $Enums.PetGender
     appointment?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     serviceId?: StringFieldUpdateOperationsInput | string
@@ -10073,9 +10173,12 @@ export namespace Prisma {
     id?: string
     ownerName: string
     phone: string
+    email: string
+    address: string
     petName: string
     petType: string
     petBreed?: string | null
+    petGender: $Enums.PetGender
     appointment: Date | string
     status?: string
     serviceId: string
@@ -10087,9 +10190,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     ownerName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     petName?: StringFieldUpdateOperationsInput | string
     petType?: StringFieldUpdateOperationsInput | string
     petBreed?: NullableStringFieldUpdateOperationsInput | string | null
+    petGender?: EnumPetGenderFieldUpdateOperationsInput | $Enums.PetGender
     appointment?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -10099,9 +10205,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     ownerName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     petName?: StringFieldUpdateOperationsInput | string
     petType?: StringFieldUpdateOperationsInput | string
     petBreed?: NullableStringFieldUpdateOperationsInput | string | null
+    petGender?: EnumPetGenderFieldUpdateOperationsInput | $Enums.PetGender
     appointment?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     serviceId?: StringFieldUpdateOperationsInput | string
@@ -10581,6 +10690,13 @@ export namespace Prisma {
     duration?: SortOrder
   }
 
+  export type EnumPetGenderFilter<$PrismaModel = never> = {
+    equals?: $Enums.PetGender | EnumPetGenderFieldRefInput<$PrismaModel>
+    in?: $Enums.PetGender[] | ListEnumPetGenderFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PetGender[] | ListEnumPetGenderFieldRefInput<$PrismaModel>
+    not?: NestedEnumPetGenderFilter<$PrismaModel> | $Enums.PetGender
+  }
+
   export type ServiceScalarRelationFilter = {
     is?: ServiceWhereInput
     isNot?: ServiceWhereInput
@@ -10595,9 +10711,12 @@ export namespace Prisma {
     id?: SortOrder
     ownerName?: SortOrder
     phone?: SortOrder
+    email?: SortOrder
+    address?: SortOrder
     petName?: SortOrder
     petType?: SortOrder
     petBreed?: SortOrder
+    petGender?: SortOrder
     appointment?: SortOrder
     status?: SortOrder
     serviceId?: SortOrder
@@ -10609,9 +10728,12 @@ export namespace Prisma {
     id?: SortOrder
     ownerName?: SortOrder
     phone?: SortOrder
+    email?: SortOrder
+    address?: SortOrder
     petName?: SortOrder
     petType?: SortOrder
     petBreed?: SortOrder
+    petGender?: SortOrder
     appointment?: SortOrder
     status?: SortOrder
     serviceId?: SortOrder
@@ -10623,14 +10745,27 @@ export namespace Prisma {
     id?: SortOrder
     ownerName?: SortOrder
     phone?: SortOrder
+    email?: SortOrder
+    address?: SortOrder
     petName?: SortOrder
     petType?: SortOrder
     petBreed?: SortOrder
+    petGender?: SortOrder
     appointment?: SortOrder
     status?: SortOrder
     serviceId?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type EnumPetGenderWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PetGender | EnumPetGenderFieldRefInput<$PrismaModel>
+    in?: $Enums.PetGender[] | ListEnumPetGenderFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PetGender[] | ListEnumPetGenderFieldRefInput<$PrismaModel>
+    not?: NestedEnumPetGenderWithAggregatesFilter<$PrismaModel> | $Enums.PetGender
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPetGenderFilter<$PrismaModel>
+    _max?: NestedEnumPetGenderFilter<$PrismaModel>
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -10862,6 +10997,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type EnumPetGenderFieldUpdateOperationsInput = {
+    set?: $Enums.PetGender
+  }
+
   export type ServiceUpdateOneRequiredWithoutAppointmentsNestedInput = {
     create?: XOR<ServiceCreateWithoutAppointmentsInput, ServiceUncheckedCreateWithoutAppointmentsInput>
     connectOrCreate?: ServiceCreateOrConnectWithoutAppointmentsInput
@@ -11074,6 +11213,23 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedEnumPetGenderFilter<$PrismaModel = never> = {
+    equals?: $Enums.PetGender | EnumPetGenderFieldRefInput<$PrismaModel>
+    in?: $Enums.PetGender[] | ListEnumPetGenderFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PetGender[] | ListEnumPetGenderFieldRefInput<$PrismaModel>
+    not?: NestedEnumPetGenderFilter<$PrismaModel> | $Enums.PetGender
+  }
+
+  export type NestedEnumPetGenderWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.PetGender | EnumPetGenderFieldRefInput<$PrismaModel>
+    in?: $Enums.PetGender[] | ListEnumPetGenderFieldRefInput<$PrismaModel>
+    notIn?: $Enums.PetGender[] | ListEnumPetGenderFieldRefInput<$PrismaModel>
+    not?: NestedEnumPetGenderWithAggregatesFilter<$PrismaModel> | $Enums.PetGender
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumPetGenderFilter<$PrismaModel>
+    _max?: NestedEnumPetGenderFilter<$PrismaModel>
+  }
+
   export type CategoryCreateWithoutProductsInput = {
     id?: string
     name: string
@@ -11181,9 +11337,12 @@ export namespace Prisma {
     id?: string
     ownerName: string
     phone: string
+    email: string
+    address: string
     petName: string
     petType: string
     petBreed?: string | null
+    petGender: $Enums.PetGender
     appointment: Date | string
     status?: string
     createdAt?: Date | string
@@ -11194,9 +11353,12 @@ export namespace Prisma {
     id?: string
     ownerName: string
     phone: string
+    email: string
+    address: string
     petName: string
     petType: string
     petBreed?: string | null
+    petGender: $Enums.PetGender
     appointment: Date | string
     status?: string
     userId?: string | null
@@ -11236,9 +11398,12 @@ export namespace Prisma {
     id?: StringFilter<"Appointment"> | string
     ownerName?: StringFilter<"Appointment"> | string
     phone?: StringFilter<"Appointment"> | string
+    email?: StringFilter<"Appointment"> | string
+    address?: StringFilter<"Appointment"> | string
     petName?: StringFilter<"Appointment"> | string
     petType?: StringFilter<"Appointment"> | string
     petBreed?: StringNullableFilter<"Appointment"> | string | null
+    petGender?: EnumPetGenderFilter<"Appointment"> | $Enums.PetGender
     appointment?: DateTimeFilter<"Appointment"> | Date | string
     status?: StringFilter<"Appointment"> | string
     serviceId?: StringFilter<"Appointment"> | string
@@ -11362,9 +11527,12 @@ export namespace Prisma {
     id?: string
     ownerName: string
     phone: string
+    email: string
+    address: string
     petName: string
     petType: string
     petBreed?: string | null
+    petGender: $Enums.PetGender
     appointment: Date | string
     status?: string
     createdAt?: Date | string
@@ -11375,9 +11543,12 @@ export namespace Prisma {
     id?: string
     ownerName: string
     phone: string
+    email: string
+    address: string
     petName: string
     petType: string
     petBreed?: string | null
+    petGender: $Enums.PetGender
     appointment: Date | string
     status?: string
     serviceId: string
@@ -11458,9 +11629,12 @@ export namespace Prisma {
     id?: string
     ownerName: string
     phone: string
+    email: string
+    address: string
     petName: string
     petType: string
     petBreed?: string | null
+    petGender: $Enums.PetGender
     appointment: Date | string
     status?: string
     userId?: string | null
@@ -11471,9 +11645,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     ownerName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     petName?: StringFieldUpdateOperationsInput | string
     petType?: StringFieldUpdateOperationsInput | string
     petBreed?: NullableStringFieldUpdateOperationsInput | string | null
+    petGender?: EnumPetGenderFieldUpdateOperationsInput | $Enums.PetGender
     appointment?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11484,9 +11661,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     ownerName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     petName?: StringFieldUpdateOperationsInput | string
     petType?: StringFieldUpdateOperationsInput | string
     petBreed?: NullableStringFieldUpdateOperationsInput | string | null
+    petGender?: EnumPetGenderFieldUpdateOperationsInput | $Enums.PetGender
     appointment?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -11497,9 +11677,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     ownerName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     petName?: StringFieldUpdateOperationsInput | string
     petType?: StringFieldUpdateOperationsInput | string
     petBreed?: NullableStringFieldUpdateOperationsInput | string | null
+    petGender?: EnumPetGenderFieldUpdateOperationsInput | $Enums.PetGender
     appointment?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -11510,9 +11693,12 @@ export namespace Prisma {
     id?: string
     ownerName: string
     phone: string
+    email: string
+    address: string
     petName: string
     petType: string
     petBreed?: string | null
+    petGender: $Enums.PetGender
     appointment: Date | string
     status?: string
     serviceId: string
@@ -11523,9 +11709,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     ownerName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     petName?: StringFieldUpdateOperationsInput | string
     petType?: StringFieldUpdateOperationsInput | string
     petBreed?: NullableStringFieldUpdateOperationsInput | string | null
+    petGender?: EnumPetGenderFieldUpdateOperationsInput | $Enums.PetGender
     appointment?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11536,9 +11725,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     ownerName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     petName?: StringFieldUpdateOperationsInput | string
     petType?: StringFieldUpdateOperationsInput | string
     petBreed?: NullableStringFieldUpdateOperationsInput | string | null
+    petGender?: EnumPetGenderFieldUpdateOperationsInput | $Enums.PetGender
     appointment?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     serviceId?: StringFieldUpdateOperationsInput | string
@@ -11549,9 +11741,12 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     ownerName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
     petName?: StringFieldUpdateOperationsInput | string
     petType?: StringFieldUpdateOperationsInput | string
     petBreed?: NullableStringFieldUpdateOperationsInput | string | null
+    petGender?: EnumPetGenderFieldUpdateOperationsInput | $Enums.PetGender
     appointment?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     serviceId?: StringFieldUpdateOperationsInput | string
