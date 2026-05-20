@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
+import DateAndTimeSelector from "@/components/appointments/date-and-time-selector";
 
 export const metadata = {
   title: "Reservar Cita - Seleccionar Fecha | Pampaw",
@@ -27,6 +28,35 @@ export default async function AppointmentDateSelectionPage({
     redirect("/agendar-cita");
   }
 
+  // Fetch future appointments from the start of today to check for double bookings
+  const now = new Date();
+  const startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  
+  const appointments = await prisma.appointment.findMany({
+    where: {
+      appointment: {
+        gte: startDate,
+      },
+      status: {
+        not: "cancelled",
+      },
+    },
+    include: {
+      service: true,
+    },
+  });
+
+  // Serialize dates and relationships for the client component
+  const serializedAppointments = appointments.map((app) => ({
+    id: app.id,
+    appointment: app.appointment.toISOString(),
+    service: {
+      id: app.service.id,
+      name: app.service.name,
+      duration: app.service.duration,
+    },
+  }));
+
   return (
     <main className="min-h-screen bg-[#fafafa] pb-32 pt-32">
       <div className="mx-auto max-w-3xl px-6">
@@ -50,28 +80,12 @@ export default async function AppointmentDateSelectionPage({
         </div>
 
         <div className="bg-white rounded-[3rem] p-8 md:p-12 border border-neutral-100 shadow-sm">
-          <form action="/agendar-cita/datos" method="GET" className="space-y-8">
-            <input type="hidden" name="serviceId" value={serviceId} />
-            
-            <div className="space-y-4">
-              <label className="text-[12px] font-black uppercase tracking-[0.3em] text-neutral-900 block">
-                Selecciona Fecha y Hora
-              </label>
-              <input
-                type="datetime-local"
-                name="date"
-                required
-                className="w-full rounded-2xl border border-neutral-200 bg-neutral-50 px-6 py-5 text-sm outline-none transition focus:border-black focus:bg-white"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full rounded-full bg-black px-8 py-5 text-xs font-black uppercase tracking-[0.3em] text-white transition hover:bg-neutral-800 active:scale-95 shadow-xl"
-            >
-              Continuar a Datos Finales →
-            </button>
-          </form>
+          <DateAndTimeSelector
+            serviceId={serviceId}
+            serviceName={service.name}
+            serviceDuration={service.duration}
+            existingAppointments={serializedAppointments}
+          />
         </div>
 
       </div>

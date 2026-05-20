@@ -22,7 +22,7 @@ export default function AppointmentsCalendar({
 
       end: new Date(
         new Date(appointment.appointment).getTime() +
-          60 * 60 * 1000
+          (appointment.service?.duration || 60) * 60 * 1000
       ),
     })
   );
