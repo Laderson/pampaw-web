@@ -21,7 +21,7 @@ export default async function AppointmentDateSelectionPage({
   }
 
   const service = await prisma.service.findUnique({
-    where: { id: serviceId }
+    where: { id: serviceId },
   });
 
   if (!service) {
@@ -30,8 +30,12 @@ export default async function AppointmentDateSelectionPage({
 
   // Fetch future appointments from the start of today to check for double bookings
   const now = new Date();
-  const startDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  
+  const startDate = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  );
+
   const appointments = await prisma.appointment.findMany({
     where: {
       appointment: {
@@ -58,28 +62,45 @@ export default async function AppointmentDateSelectionPage({
   }));
 
   return (
-    <main className="min-h-screen bg-[#fafafa] pb-32 pt-32">
+    <main className="min-h-screen bg-[#F7F4EE] pb-32 pt-32">
       <div className="mx-auto max-w-3xl px-6">
-        
+
         {/* Progress Bar */}
-        <div className="mb-12 flex items-center justify-between text-[10px] font-black uppercase tracking-[0.2em] text-neutral-300">
-          <Link href="/agendar-cita" className="hover:text-black transition-colors">1. Servicio</Link>
-          <div className="h-px flex-1 bg-neutral-200 mx-4"></div>
-          <span className="text-black">2. Fecha</span>
-          <div className="h-px flex-1 bg-neutral-200 mx-4"></div>
-          <span>3. Datos</span>
+        <div className="mb-12 flex items-center justify-between text-[10px] font-black uppercase tracking-[0.2em] text-[#9B8B78]">
+          <Link
+            href="/agendar-cita"
+            className="transition-colors hover:text-[#4E5B31]"
+          >
+            1. Servicio
+          </Link>
+
+          <div className="mx-4 h-px flex-1 bg-[#D8D0C4]"></div>
+
+          <span className="text-[#4E5B31]">
+            2. Fecha
+          </span>
+
+          <div className="mx-4 h-px flex-1 bg-[#D8D0C4]"></div>
+
+          <span>
+            3. Datos
+          </span>
         </div>
 
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-black tracking-tighter text-neutral-900 md:text-5xl">
+        <div className="mb-16 text-center">
+          <h1 className="text-4xl font-black tracking-tighter text-[#4E5B31] md:text-5xl">
             ¿Cuándo te esperamos?
           </h1>
-          <p className="mt-4 text-neutral-500 font-medium">
-            Servicio seleccionado: <span className="text-black font-bold">{service.name}</span>
+
+          <p className="mt-4 font-medium text-[#7A5C3E]">
+            Servicio seleccionado:{" "}
+            <span className="font-bold text-[#4E5B31]">
+              {service.name}
+            </span>
           </p>
         </div>
 
-        <div className="bg-white rounded-[3rem] p-8 md:p-12 border border-neutral-100 shadow-sm">
+        <div className="rounded-[3rem] border border-[#E6DED2] bg-white p-8 shadow-sm md:p-12">
           <DateAndTimeSelector
             serviceId={serviceId}
             serviceName={service.name}

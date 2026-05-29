@@ -12,36 +12,45 @@ export const metadata = {
     "El mejor spa canino, veterinaria y petshop de Barranquilla. Cuidado excepcional y productos de alta gama.",
 };
 
+const Divider = () => (
+  <div className="mx-auto max-w-7xl px-6">
+    <div style={{ height: '1px', backgroundColor: '#E9DFC9' }} />
+  </div>
+);
+
 export default async function HomePage() {
-  // Fetch one representative service for each category
   const services = await Promise.all([
     prisma.service.findFirst({ where: { category: "Spa" } }),
     prisma.service.findFirst({ where: { category: "Veterinaria" } }),
     prisma.service.findFirst({ where: { category: "Guardería" } }),
   ]).then(res => res.filter(Boolean) as any[]);
 
-  const products = await prisma.product.findMany({
-    take: 3,
-  });
-  const promotions = await prisma.promotion.findMany({
-    take: 3,
-  });
+  const products = await prisma.product.findMany({ take: 3 });
+  const promotions = await prisma.promotion.findMany({ take: 3 });
 
   return (
     <main className="overflow-hidden">
       <Hero />
-      
+
+      <Divider />
+
       <div id="servicios" className="scroll-mt-48">
         <ServicesSection services={services} />
       </div>
 
+      <Divider />
+
       <div id="promos" className="scroll-mt-48">
         <PromotionsSection promotions={promotions} />
       </div>
-      
+
+      <Divider />
+
       <div>
         <Benefits />
       </div>
+
+      <Divider />
 
       <div id="petshop" className="scroll-mt-48">
         <ProductsSection products={products} />
