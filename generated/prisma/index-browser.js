@@ -152,9 +152,12 @@ exports.Prisma.AppointmentScalarFieldEnum = {
   id: 'id',
   ownerName: 'ownerName',
   phone: 'phone',
+  email: 'email',
+  address: 'address',
   petName: 'petName',
   petType: 'petType',
   petBreed: 'petBreed',
+  petGender: 'petGender',
   appointment: 'appointment',
   status: 'status',
   serviceId: 'serviceId',
@@ -203,7 +206,10 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.PetGender = exports.$Enums.PetGender = {
+  MALE: 'MALE',
+  FEMALE: 'FEMALE'
+};
 
 exports.Prisma.ModelName = {
   Product: 'Product',

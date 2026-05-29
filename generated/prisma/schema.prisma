@@ -49,10 +49,13 @@ model Appointment {
 
   ownerName String
   phone     String
+  email     String
+  address   String
 
-  petName  String
-  petType  String
-  petBreed String?
+  petName   String
+  petType   String
+  petBreed  String?
+  petGender PetGender
 
   appointment DateTime
 
@@ -65,6 +68,11 @@ model Appointment {
   user   User?   @relation(fields: [userId], references: [id])
 
   createdAt DateTime @default(now())
+}
+
+enum PetGender {
+  MALE
+  FEMALE
 }
 
 model User {
